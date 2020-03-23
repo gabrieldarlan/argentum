@@ -1,16 +1,16 @@
-package br.com.alura.argentum.testes;
+package br.com.alura.argentum.modelo;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import br.com.alura.argentum.modelo.Candlestick;
-import br.com.alura.argentum.modelo.CandlestickFactory;
-import br.com.alura.argentum.modelo.Negociacao;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
-public class TestaCandlestickFactory {
+class CandlestickFactoryTest {
 
-	public static void main(String[] args) {
+	@Test
+	void sequenciaDeNegociacoesSimples() {
 		LocalDateTime hoje = LocalDateTime.now();
 
 		Negociacao negociacao1 = new Negociacao(40.0, 100, hoje);
@@ -21,14 +21,13 @@ public class TestaCandlestickFactory {
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1, negociacao2, negociacao3, negociacao4);
 
 		CandlestickFactory fabrica = new CandlestickFactory();
-	
 		Candlestick candle = fabrica.geraCandleParaData(negociacoes, hoje);
 
-		System.out.println(candle.getAbertura());
-		System.out.println(candle.getFechamento());
-		System.out.println(candle.getMaximo());
-		System.out.println(candle.getMinimo());
-		System.out.println(candle.getVolume());
-
+		Assert.assertEquals(20.0, candle.getMinimo(), 0.000001);
+		Assert.assertEquals(45.0, candle.getMaximo(), 0.000001);
+		Assert.assertEquals(40.0, candle.getAbertura(), 0.000001);
+		Assert.assertEquals(20.0, candle.getFechamento(), 0.000001);
+		Assert.assertEquals(14000, candle.getVolume(), 0.000001);
 	}
+
 }
