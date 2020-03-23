@@ -16,7 +16,7 @@ public final class Negociacao {
 
 	public double getPreco() {
 		return preco;
-	} 
+	}
 
 	public int getQuantidade() {
 		return quantidade;
@@ -24,5 +24,9 @@ public final class Negociacao {
 
 	public LocalDateTime getData() {
 		return data;
+	}
+
+	public double getVolume() {
+		return this.preco * this.quantidade;
 	}
 }
