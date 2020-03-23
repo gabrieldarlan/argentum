@@ -1,6 +1,7 @@
 package br.com.alura.argentum.modelo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,4 +31,37 @@ class CandlestickFactoryTest {
 		Assert.assertEquals(14000, candle.getVolume(), 0.000001);
 	}
 
+	@Test
+	public void geraCandlestickComApenasUmaNegociacao() {
+		LocalDateTime data = LocalDateTime.now();
+		Negociacao negociacao = new Negociacao(40, 100, data);
+
+		List<Negociacao> negociacoes = Arrays.asList(negociacao);
+		CandlestickFactory fabrica = new CandlestickFactory();
+		Candlestick candle = fabrica.geraCandleParaData(negociacoes, data);
+
+		Assert.assertEquals(40.0, candle.getMinimo(), 0.000001);
+		Assert.assertEquals(40.0, candle.getMaximo(), 0.000001);
+		Assert.assertEquals(40.0, candle.getAbertura(), 0.000001);
+		Assert.assertEquals(40.0, candle.getFechamento(), 0.000001);
+		Assert.assertEquals(4000, candle.getVolume(), 0.000001);
+	}
+
+	@Test
+	public void geraCandlestickComZerosEmCasosDeNenhumNegociacao() {
+	
+		LocalDateTime data = LocalDateTime.now();
+		
+		List<Negociacao> negociacoes = new ArrayList<>();
+	
+		CandlestickFactory fabrica = new CandlestickFactory();
+		
+		Candlestick candle = fabrica.geraCandleParaData(negociacoes, data);
+
+		Assert.assertEquals(0, candle.getMinimo(), 0.000001);
+		Assert.assertEquals(0, candle.getMaximo(), 0.000001);
+		Assert.assertEquals(0, candle.getAbertura(), 0.000001);
+		Assert.assertEquals(0, candle.getFechamento(), 0.000001);
+		Assert.assertEquals(0, candle.getVolume(), 0.000001);
+	}
 }
