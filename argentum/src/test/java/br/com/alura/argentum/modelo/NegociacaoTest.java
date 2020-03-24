@@ -19,7 +19,6 @@ public class NegociacaoTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void naoDeveCriarNegociacaoComQuantidadeNegativa() {
 		new Negociacao(10.0, -2, LocalDateTime.now());
-		
 	}
 	
 
