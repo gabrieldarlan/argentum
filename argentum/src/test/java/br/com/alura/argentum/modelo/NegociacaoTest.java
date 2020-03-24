@@ -21,5 +21,4 @@ public class NegociacaoTest {
 		new Negociacao(10.0, -2, LocalDateTime.now());
 	}
 	
-
 }
