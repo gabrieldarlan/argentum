@@ -53,7 +53,7 @@ public class LocalDateTimeConverter implements Converter {
 		ZonedDateTime dataComZona = ZonedDateTime.ofInstant(tempo, zone);
 		LocalDateTime data = dataComZona.toLocalDateTime();
 		
-		return null;
+		return data;
 	}
 
 }
