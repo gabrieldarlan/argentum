@@ -10,11 +10,11 @@ public final class Negociacao {
 
 	public Negociacao(double preco, int quantidade, LocalDateTime data) {
 		if (preco < 0) {
-			throw new IllegalArgumentException("O preÃ§o nÃ£o pode ser negativo");
+			throw new IllegalArgumentException("O preço não pode ser negativo");
 		}
 
 		if (data == null) {
-			throw new IllegalArgumentException("A data nÃ£o pode ser nula");
+			throw new IllegalArgumentException("A data não pode ser nula");
 		}
 
 		if (quantidade < 1) {
