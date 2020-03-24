@@ -12,15 +12,15 @@ public final class Negociacao {
 		if (preco < 0) {
 			throw new IllegalArgumentException("O preço não pode ser negativo");
 		}
-		
+
 		if (data == null) {
 			throw new IllegalArgumentException("A data não pode ser nula");
 		}
-		
+
 		if (quantidade < 1) {
 			throw new IllegalArgumentException("A quantidade deve ser um valor positivo");
 		}
-		
+
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;
@@ -75,5 +75,11 @@ public final class Negociacao {
 		return true;
 	}
 
+	public boolean isMesmoDia(LocalDateTime outraData) {
+
+		return this.data.getDayOfMonth() == outraData.getDayOfMonth() && 
+				this.data.getMonth() == outraData.getMonth() &&
+				this.data.getYear()==outraData.getYear();
+	}
 
 }
