@@ -10,7 +10,7 @@ public class SerieTemporal {
 		this.candles = candles;
 	}
 
-	public Candle getCandlestick(int posicao) {
+	public Candle getCandle(int posicao) {
 		return candles.get(posicao);
 	}
 
