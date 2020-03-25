@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class CandlestickFactoryTest {
+public class CandleFactoryTest {
 
 	@Test
 	public void sequenciaDeNegociacoesSimples() {
@@ -22,8 +22,8 @@ public class CandlestickFactoryTest {
 
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1, negociacao2, negociacao3, negociacao4);
 
-		CandlestickFactory fabrica = new CandlestickFactory();
-		Candlestick candle = fabrica.geraCandleParaData(negociacoes, hoje);
+		CandleFactory fabrica = new CandleFactory();
+		Candle candle = fabrica.geraCandleParaData(negociacoes, hoje);
 
 		assertEquals(20.0, candle.getMinimo(), 0.000001);
 		assertEquals(45.0, candle.getMaximo(), 0.000001);
@@ -38,8 +38,8 @@ public class CandlestickFactoryTest {
 		Negociacao negociacao = new Negociacao(40, 100, data);
 
 		List<Negociacao> negociacoes = Arrays.asList(negociacao);
-		CandlestickFactory fabrica = new CandlestickFactory();
-		Candlestick candle = fabrica.geraCandleParaData(negociacoes, data);
+		CandleFactory fabrica = new CandleFactory();
+		Candle candle = fabrica.geraCandleParaData(negociacoes, data);
 
 		assertEquals(40.0, candle.getMinimo(), 0.000001);
 		assertEquals(40.0, candle.getMaximo(), 0.000001);
@@ -55,9 +55,9 @@ public class CandlestickFactoryTest {
 
 		List<Negociacao> negociacoes = new ArrayList<>();
 
-		CandlestickFactory fabrica = new CandlestickFactory();
+		CandleFactory fabrica = new CandleFactory();
 
-		Candlestick candle = fabrica.geraCandleParaData(negociacoes, data);
+		Candle candle = fabrica.geraCandleParaData(negociacoes, data);
 
 		assertEquals(0, candle.getMinimo(), 0.000001);
 		assertEquals(0, candle.getMaximo(), 0.000001);
@@ -87,9 +87,9 @@ public class CandlestickFactoryTest {
 		List<Negociacao> negociacoes = Arrays.asList(negociacao1, negociacao2, negociacao3, negociacao4, negociacao5,
 				negociacao6, negociacao7);
 
-		CandlestickFactory fabrica = new CandlestickFactory();
+		CandleFactory fabrica = new CandleFactory();
 
-		List<Candlestick> candlesticks = fabrica.constroiCandles(negociacoes);
+		List<Candle> candlesticks = fabrica.constroiCandles(negociacoes);
 
 		assertEquals(3, candlesticks.size());
 		assertTrue(negociacoes.get(0).isMesmoDia(candlesticks.get(0).getData()));

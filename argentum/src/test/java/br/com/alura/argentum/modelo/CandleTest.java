@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CandlestickTest {
+public class CandleTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void maximoNaoDeveSerMenorDoQueOMinimo() {
@@ -13,7 +13,7 @@ public class CandlestickTest {
 		CandleBuilder builder = new CandleBuilder();
 		LocalDateTime hoje = LocalDateTime.now();
 
-		Candlestick candle = 
+		Candle candle = 
 				builder.comAbertura(10.0)
 				.comFechamento(30.0)
 				.comMinimo(25.0)
@@ -28,7 +28,7 @@ public class CandlestickTest {
 		CandleBuilder builder = new CandleBuilder();
 		LocalDateTime hoje = LocalDateTime.now();
 
-		Candlestick candle = 
+		Candle candle = 
 				builder.comAbertura(30.0)
 				.comFechamento(30.0)
 				.comMinimo(25.0)
